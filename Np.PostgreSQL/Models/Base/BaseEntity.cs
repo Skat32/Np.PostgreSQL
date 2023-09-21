@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Np.PostgreSQL.Models.Base.Interfaces;
 
 namespace Np.PostgreSQL.Models.Base;
@@ -22,11 +23,13 @@ public abstract class BaseEntity : ICreatable, IUpdatable, ISoftDeletableEntity
     /// <summary>
     /// Дата создания сущности в БД
     /// </summary>
+    [Column(TypeName = "timestamp without time zone")]
     public DateTime CreatedAt { get; private set; }
         
     /// <summary>
     /// Дата обновления сущности в БД
     /// </summary>
+    [Column(TypeName = "timestamp without time zone")]
     public DateTime UpdatedAt { get; private set; }
         
     void IUpdatable.SetDate(DateTime date)
